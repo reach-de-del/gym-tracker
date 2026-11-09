@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f1115">
+  <title>Hoops Tracker</title>
+  <meta name="description" content="Weekly basketball strength, speed and endurance workout tracker with rest timers.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-row">
+      <h1>🏀 Hoops Tracker</h1>
+      <button id="resetWeek" class="ghost" type="button">Reset week</button>
+    </div>
+    <div class="week">
+      <div class="week-text"><span id="weekLabel">Week progress</span><span id="weekPct">0%</span></div>
+      <div class="bar"><span id="weekBar" style="width:0%"></span></div>
+      <p id="weekNote" class="muted"></p>
+    </div>
+  </header>
+
+  <nav id="tabs" class="tabs" aria-label="Days of the week"></nav>
+
+  <main id="app" aria-live="polite"></main>
+
+  <section class="tips">
+    <details>
+      <summary>Progression and recovery</summary>
+      <ul>
+        <li>Pick a weight that leaves 1-2 reps in reserve. When you hit the top of the rep range on every set, add the smallest jump (about 2.5 kg).</li>
+        <li>Rest 2-3 min on heavy lifts, 60-90 s on accessory work. The timer starts on its own when you tick a set.</li>
+        <li>Every 5th week is a deload: same exercises, about 40% less volume and lighter loads.</li>
+        <li>Land jumps softly and quietly. Stop jump sets if your form gets sloppy.</li>
+        <li>Fuel: roughly 1.6-2 g protein per kg (about 90-110 g a day at 55 kg), carbs around training, and 8+ hours of sleep.</li>
+      </ul>
+    </details>
+  </section>
+
+  <footer class="foot muted">Progress is saved on this device and resets each Monday.</footer>
+
+  <div id="dock" class="dock" role="region" aria-label="Rest timer">
+    <div id="dockIdle" class="dock-idle">
+      <span class="dock-label">Rest timer</span>
+      <div class="chips">
+        <button type="button" data-start="30">0:30</button>
+        <button type="button" data-start="60">1:00</button>
+        <button type="button" data-start="90">1:30</button>
+        <button type="button" data-start="120">2:00</button>
+        <button type="button" data-start="180">3:00</button>
+      </div>
+    </div>
+    <div id="dockActive" class="dock-active" hidden>
+      <div class="dock-top">
+        <div>
+          <div id="dockName" class="dock-name">Rest</div>
+          <div id="dockTime" class="dock-time">0:00</div>
+        </div>
+        <div class="dock-btns">
+          <button type="button" id="tMinus">-15s</button>
+          <button type="button" id="tPlus">+15s</button>
+          <button type="button" id="tSkip" class="primary">Skip</button>
+        </div>
+      </div>
+      <div class="bar thin"><span id="dockBar" style="width:0%"></span></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
